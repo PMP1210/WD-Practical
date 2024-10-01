@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Area</title>
+</head>
+
+<body>
+    <u>
+        <h1>Demonstration of image tag (&lt;img&gt;) and area tag (&lt;area&gt;)</h1>
+    </u>
+    <br>
+
+    <p>
+    <h3>This is the image of the three planets of the solar system.</h3>
+    </p>
+    <p>
+    <h5>You can click on each planet to view a detailed image of that specific planet within the same browser tab.</h5>
+    </p>
+
+    <img src="/img/solar-system.webp" alt="Solar system" height="200px" width="500px" usemap="#solar"><br>
+
+    <map name="solar">
+        <area shape="circle" coords="140,130,100" href="/img/earth.jpg" alt="Planet 1">
+        <area shape="circle" coords="385,130,100" href="/img/mars.jpg" alt="Planet 2">
+        <area shape="circle" coords="635,130,100" href="/img/moon.jpg" alt="Planet 3">
+    </map>
+</body>
+
+</html>
