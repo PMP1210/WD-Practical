@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to JavaScript Object Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        textarea {
+            width: 50%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #27ae60;
+            white-space: pre-wrap; /* Preserve whitespace for object formatting */
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON to JavaScript Object Converter</h1>
+    <textarea id="jsonInput" placeholder='Enter JSON string here...'></textarea>
+    <button id="convertButton">Convert to Object</button>
+    <div class="result" id="resultOutput"></div>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const jsonString = document.getElementById('jsonInput').value;
+            let resultOutput = '';
+
+            try {
+                const jsObject = JSON.parse(jsonString); // Convert JSON string to JavaScript object
+                resultOutput = `JavaScript Object:\n${JSON.stringify(jsObject, null, 2)}`; // Format object for display
+            } catch (error) {
+                resultOutput = `Error: ${error.message}`; // Handle JSON parsing error
+            }
+
+            document.getElementById('resultOutput').textContent = resultOutput;
+        });
+    </script>
+</body>
+</html>

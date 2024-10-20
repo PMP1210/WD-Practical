@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search in Sentences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        #container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .sentences-box {
+            background-color: #e9f7fa;
+            border: 1px solid #b2ebf2;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            color: #00796b;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Word Search in Sentences</h1>
+        <div class="sentences-box" id="sentencesBox"></div>
+        <input type="text" id="wordInput" placeholder="Enter a word to search..." />
+        <button id="searchButton">Search</button>
+        <div class="result" id="resultOutput"></div>
+    </div>
+
+    <script>
+        const sentences = [
+            "The quick brown fox jumps over the lazy dog.",
+            "JavaScript is a versatile language.",
+            "Finding a word in an array can be useful."
+        ];
+
+        const sentencesBox = document.getElementById('sentencesBox');
+        sentencesBox.innerHTML = sentences.join('<br>');
+
+        document.getElementById('searchButton').addEventListener('click', function () {
+            const wordToFind = document.getElementById('wordInput').value.trim();
+            const result = findWordIndex(sentences, wordToFind);
+            const output = document.getElementById('resultOutput');
+
+            if (result !== -1) {
+                output.textContent = `Word found in sentence ${result.sentenceIndex + 1} at index ${result.wordIndex}.`;
+            } else {
+                output.textContent = "Word not found.";
+            }
+        });
+
+        function findWordIndex(sentenceArray, wordToFind) {
+            for (let i = 0; i < sentenceArray.length; i++) {
+                const words = sentenceArray[i].split(" ");
+                for (let j = 0; j < words.length; j++) {
+                    if (words[j].toLowerCase() === wordToFind.toLowerCase()) {
+                        return { sentenceIndex: i, wordIndex: j };
+                    }
+                }
+            }
+            return -1;
+        }
+    </script>
+</body>
+
+</html>

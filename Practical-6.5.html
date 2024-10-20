@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Occurrences of 'a'</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        #container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+        }
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Find Occurrences of 'a'</h1>
+        <input type="text" id="inputWord" placeholder="Enter a word..." />
+        <button id="findButton">Find</button>
+        <div class="result" id="resultOutput"></div>
+    </div>
+
+    <script>
+        document.getElementById('findButton').addEventListener('click', function() {
+            const word = document.getElementById('inputWord').value;
+            const result = findOccurrences(word);
+            const output = document.getElementById('resultOutput');
+
+            if (result) {
+                output.innerHTML = `First occurrence of "a": Position ${result.firstIndex}<br>` +
+                                   `Last occurrence of "a": Position ${result.lastIndex}<br>` +
+                                   `String between them: "${result.between}"`;
+            } else {
+                output.textContent = 'The letter "a" does not occur in the word.';
+            }
+        });
+
+        function findOccurrences(word) {
+            const firstIndex = word.indexOf('a');
+            const lastIndex = word.lastIndexOf('a');
+
+            if (firstIndex !== -1 && lastIndex !== -1 && firstIndex < lastIndex) {
+                const between = word.slice(firstIndex + 1, lastIndex);
+                return {
+                    firstIndex: firstIndex,
+                    lastIndex: lastIndex,
+                    between: between
+                };
+            }
+
+            return null; 
+        }
+    </script>
+</body>
+</html>

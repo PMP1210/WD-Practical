@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Announcement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .result {
+            font-size: 24px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Press Any Key</h1>
+    <div class="result" id="vowelAnnouncement"></div>
+
+    <script>
+        document.addEventListener('keydown', function(event) {
+            const key = event.key.toLowerCase(); // Get the pressed key
+            if ('aeiou'.includes(key)) {
+                document.getElementById('vowelAnnouncement').textContent = `Vowel "${key}" is pressed!`;
+            } else {
+                document.getElementById('vowelAnnouncement').textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>

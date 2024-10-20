@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events with Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s; /* Smooth transition for buttons */
+        }
+        button:hover {
+            opacity: 0.9; /* Slight opacity change on hover */
+        }
+        #timeOutput {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="findTimeButton">Find Time</button>
+    <button id="redButton">Red</button>
+    <button id="greenButton">Green</button>
+    <div id="timeOutput"></div>
+
+    <script>
+        // Show current time and date when button is clicked
+        document.getElementById('findTimeButton').addEventListener('click', function() {
+            const now = new Date();
+            const formattedDate = now.toLocaleString(); // Format date and time
+            document.getElementById('timeOutput').textContent = `Current Date and Time: ${formattedDate}`;
+        });
+
+        // Change background color to red
+        document.getElementById('redButton').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'red';
+        });
+
+        // Change background color to green
+        document.getElementById('greenButton').addEventListener('click', function() {
+            document.body.style.backgroundColor = 'green';
+        });
+    </script>
+</body>
+</html>

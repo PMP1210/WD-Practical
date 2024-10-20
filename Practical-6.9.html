@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Multiplication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #333;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        input[type="number"] {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 24px;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digit Multiplication</h1>
+    <input type="number" id="inputNumber" placeholder="Enter a 2-digit number..." min="10" max="99" />
+    <button id="calculateButton">Calculate</button>
+    <div class="result" id="resultOutput"></div>
+
+    <script>
+        document.getElementById('calculateButton').addEventListener('click', function() {
+            const inputNumber = document.getElementById('inputNumber').value;
+
+            // Check if input is a valid 2-digit number
+            if (inputNumber.length === 2) {
+                const firstDigit = parseInt(inputNumber[0]);
+                const secondDigit = parseInt(inputNumber[1]);
+                const result = multiplyDigit(firstDigit, secondDigit);
+                document.getElementById('resultOutput').textContent = `Result: ${result}`;
+            } else {
+                document.getElementById('resultOutput').textContent = 'Please enter a valid 2-digit number.';
+            }
+        });
+
+        function multiplyDigit(digit, times) {
+            let result = 1; // Start with 1 for multiplication
+            for (let i = 0; i < times; i++) {
+                result *= digit; // Multiply the digit 'times' times
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
